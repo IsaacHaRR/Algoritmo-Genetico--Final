@@ -1,2 +1,2 @@
-# Algoritmo-Gen-tico
+# Algoritmo-Genetico
 Algoritmo genético simplificado.
