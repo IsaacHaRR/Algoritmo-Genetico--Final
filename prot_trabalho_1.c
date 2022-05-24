@@ -91,6 +91,7 @@ int main() {
             break;
         }
 
+
         //Selecionar os melhores individuos:
         int troca;
 
@@ -114,37 +115,31 @@ int main() {
             }
         } while(troca != 0); 
 
-        for(int j = 0; j < tam_populacao; j++) {
-            printf("%d ", populacao[j]);
-        }
-
         int melhores[tam_populacao / 2];
 
         for(int j = 0; j < tam_populacao / 2; j++) {
             melhores[j] = populacao[j];
+            printf("%d ", melhores[j]);
         }
 
-        /*int melhores[tam_populacao / 2];
-
-        for(int j = 0; j < (tam_populacao / 2); j++) {
-            melhores[j] = populacao[j];
-        }
-
-        for(int j = (tam_populacao/2); j < tam_populacao; j++) {
-            for(int k = 0; k < (tam_populacao / 2); k++) {
-                if(diferencas[j] < diferencas[k]) {
-                    melhores[k] = populacao[j];
-                }
+        //Aplicar cruzamento: ------------------------------------
+        int x = 0;
+        printf("\n\n");
+        for(int j = 0; j < (tam_populacao / 2) - 1; j++) {
+            for(int k = j+1; k < tam_populacao / 2; k++) {
+                populacao[x] = melhores[j] & melhores[k];
+                printf("%d ", x);
+                x++;
             }
-        }*/
-
+        }
         
+        printf("\n\n\n\npopulacao nova: ");
+        for(int j = 0; j < tam_populacao; j++) {
+            printf("%d ", populacao[j]);
+        }
 
+        //Aplicar mutacao:
 
-        //Aplicar cruzamento
-
-        
-        //Aplicar mutacao
     } 
 
     //Imprimir a melhor solucao
