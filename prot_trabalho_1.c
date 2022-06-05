@@ -11,14 +11,16 @@ int main() {
     int geracao = 0;
     double taxa_mutacao;
     double a, b, c, d, e, f;
-
+    
     srand(time(0));
 
 
     //Inicialização das variaveis
+    
     do {
         printf("Informe o tamanho da populacao inicial: ");
         scanf("%d", &tam_populacao);
+            //Condição para população inicial ser maior que 1
         if(tam_populacao < 1) {
             printf("\nErro! Necessario informar um numero positivo.\n\n");
         }
@@ -27,6 +29,7 @@ int main() {
     do {
         printf("\n\nInforme a taxa de mutacao: ");
         scanf("%lf", &taxa_mutacao);
+            //Condição para taxa de mutação estar entre 0 e 1 
         if((taxa_mutacao <= 0) || (taxa_mutacao > 1)) {
             printf("\nErro! Necessario informar um numero entre 0 e 1, incluindo o 1.");
         }
@@ -35,6 +38,7 @@ int main() {
     do {
         printf("\n\nInforme o numero maximo de geracoes: ");
         scanf("%d", &max_geracoes);
+            //Condição para maximo de gerações ser maior que 1
         if(max_geracoes < 1) {
             printf("\nErro! Necessario informar um numero positivo.");
         }
@@ -43,6 +47,7 @@ int main() {
     do {
         printf("\n\nInforme os 6 coeficientes da equacao de quinto grau, com a diferente de 0: ");
         scanf("%lf %lf %lf %lf %lf  %lf", &a, &b, &c, &d, &e, &f);
+            //Condição para o coeficiente "a" ser diferente de 0
         if(a == 0) {
             printf("Erro! Informe um 'a' diferente de 0.");
         }
@@ -77,7 +82,8 @@ int main() {
             melhor_individuo = populacao[0];
         }
         pior_diferenca = diferencas[0];
-
+        
+        //resolvendo equação com números sorteados e pegando melhor individuo
         for(int j = 1; j < tam_populacao; j++) {
             resultado = a*pow(populacao[j], 5) + b*pow(populacao[j], 4) + c*pow(populacao[j], 3) + d*pow(populacao[j], 2) + e*populacao[j] + f;
             diferencas[j] = llabs(resultado);
@@ -120,11 +126,12 @@ int main() {
         }
 
 
-        //Aplicar cruzamento:
+        //Criando variaveis para cruzamento
         int x = 0;
         int mascara_bits_direita = 15;
         int mascara_bits_esquerda = mascara_bits_direita << 4;
-
+        
+        //Aplicar cruzamento dos individuos:
         for(int j = 0; j < tam_populacao/2; j++) {
             int individuo1, individuo2;
 
@@ -145,7 +152,8 @@ int main() {
 
             x = x + 2;
         }
-
+        
+        // melhor individuo
         populacao[0] = melhor_individuo;
 
         
